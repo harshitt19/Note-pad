@@ -1,4 +1,4 @@
-
+// src/components/AddTask.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ const AddTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/api/tasks', { title, description, dueDate })
+    axios.post('http://localhost:5000/api/tasks', { title, description, dueDate })
       .then(response => {
         // Handle success (e.g., clear form, show success message)
       })
