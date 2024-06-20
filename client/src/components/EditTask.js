@@ -1,28 +1,20 @@
-// src/components/AddTask.js
+// src/components/EditTask.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddTask = ({ onTaskAdded }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [message, setMessage] = useState('');
+const EditTask = ({ task, onEditComplete }) => {
+  const [title, setTitle] = useState(task.title);
+  const [description, setDescription] = useState(task.description);
+  const [dueDate, setDueDate] = useState(task.dueDate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/tasks', { title, description, dueDate })
+    axios.patch(`http://localhost:5000/api/tasks/${task._id}`, { title, description, dueDate })
       .then(response => {
-        setTitle('');
-        setDescription('');
-        setDueDate('');
-        setMessage('Task added successfully!');
-        if (onTaskAdded) {
-          onTaskAdded(response.data);
-        }
+        onEditComplete();
       })
       .catch(error => {
-        console.error('There was an error creating the task!', error);
-        setMessage('Error adding task.');
+        console.error('There was an error updating the task!', error);
       });
   };
 
@@ -48,11 +40,10 @@ const AddTask = ({ onTaskAdded }) => {
           onChange={e => setDueDate(e.target.value)}
           required
         />
-        <button type="submit">Add Task</button>
+        <button type="submit">Update Task</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 };
 
-export default AddTask;
+export default EditTask;
