@@ -54,15 +54,22 @@ const TaskList = () => {
           </li>
         ))}
       </ul>
-      {selectedTask && !isEditing && (
-        <TaskDetail task={selectedTask} />
-      )}
-      {isEditing && selectedTask && (
-        <EditTask task={selectedTask} onEditComplete={() => {
-          setIsEditing(false);
-          fetchTasks();
-        }} />
-      )}
+      <div>
+        {selectedTask && (
+          <div>
+            <TaskDetail task={selectedTask} />
+            {isEditing && (
+              <EditTask
+                task={selectedTask}
+                onEditComplete={() => {
+                  setIsEditing(false);
+                  fetchTasks();
+                }}
+              />
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
