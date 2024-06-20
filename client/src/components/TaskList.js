@@ -32,6 +32,11 @@ const TaskList = () => {
     setTasks(tasks.filter(task => task._id !== taskId));
   };
 
+  const handleEditClick = (task) => {
+    setSelectedTask(task);
+    setIsEditing(true);
+  };
+
   return (
     <div>
       <AddTask onTaskAdded={handleTaskAdded} />
@@ -40,7 +45,7 @@ const TaskList = () => {
         {tasks.map(task => (
           <li key={task._id}>
             <span onClick={() => setSelectedTask(task)}>{task.title}</span>
-            <button onClick={() => setIsEditing(true)}>Edit</button>
+            <button onClick={() => handleEditClick(task)}>Edit</button>
             <button onClick={() => {
               axios.delete(`http://localhost:5000/api/tasks/${task._id}`)
                 .then(() => handleTaskDeleted(task._id))
