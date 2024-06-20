@@ -16,11 +16,9 @@ This Task Management Application allows users to create, read, update, and delet
 
 - Frontend: React.js, HTML, CSS, JavaScript
 - Backend: Node.js, Express.js
-- Database: (Mention your choice of database if applicable)
+- Database: (mongo db)
 
 ## Getting Started
-
-1. Clone the repository:
 
 ```bash
 git clone <repository-url>
