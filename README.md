@@ -16,7 +16,7 @@ This Task Management Application allows users to create, read, update, and delet
 
 - Frontend: React.js, HTML, CSS, JavaScript
 - Backend: Node.js, Express.js
-- Database: (mongo db)
+- Database: mongo db
 
 ## Getting Started
 
